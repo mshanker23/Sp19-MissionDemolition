@@ -52,9 +52,9 @@ public class Slingshot : MonoBehaviour
     {
         if (!aimingMode) return;
 
-        Vector3 mousePose2D = Input.mousePosition;
-        mousePose2D.z = Camera.main.transform.position.z;
-        Vector3 mousePos3D = Camera.main.ScreenToWorldPoint(mousePose2D);
+        Vector3 mousePos2D = Input.mousePosition;
+        mousePos2D.z = -Camera.main.transform.position.z;
+        Vector3 mousePos3D = Camera.main.ScreenToWorldPoint(mousePos2D);
 
 
         Vector3 mouseDelta = mousePos3D - launchPos;
@@ -74,6 +74,8 @@ public class Slingshot : MonoBehaviour
             aimingMode = false;
             projectileRigidbody.isKinematic = false;
             projectileRigidbody.velocity = -mouseDelta * velocityMult;
+            FollowCam.POI = projectile;
+            projectile = null; 
         }
 
     }
