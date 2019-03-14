@@ -56,6 +56,7 @@ public class MissionDemolition : MonoBehaviour
         castle = Instantiate<GameObject>(castles[level]);
         castle.transform.position = castlePos;
         shotsTaken = 0;
+
         SwitchView("wShow Both");
         ProjectileLine.S.Clear();
         Goal.goalMet = false;
